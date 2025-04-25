@@ -1,38 +1,168 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #f4f7fc;
+  padding-top: 80px; /* To avoid overlap with the fixed header */
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #007bff;
   color: white;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 24px;
+  z-index: 1000; /* Ensures it stays on top */
 }
 
-.App-link {
-  color: #61dafb;
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.search-box {
+  width: 80%;
+  max-width: 600px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+  color: #888;
+}
+
+.search-box::placeholder {
+  color: #888;
+}
+
+/* Main Layout */
+.main-content {
+  display: flex;
+  margin-top: 120px; /* To prevent overlap with the fixed header */
+}
+
+.filters {
+  flex: 0 0 300px; /* Sidebar width */
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 20px; /* Add margin between filters and doctor list */
+}
+
+.filters h3 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.filters h4 {
+  font-size: 18px;
+  color: #555;
+  margin-top: 15px;
+}
+
+.filters label {
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.filters input[type="radio"],
+.filters input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.filters select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.doctor-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Aligning doctors in a vertical column */
+  gap: 20px; /* Space between doctor boxes */
+  margin-top: 20px;
+}
+
+.doctor-card {
+  background-color: white;
+  padding: 15px; /* Reduced padding for smaller size */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 80%; /* 80% width of container */
+  max-width: 500px; /* Decreased the max width to make the card smaller */
+  margin: 0 auto; /* Center align */
+  height: auto; /* Height adjusts based on content */
+  margin-bottom: 20px; /* Space between each doctor card */
+}
+
+.doctor-card h2 {
+  font-size: 16px; /* Reduced font size for doctor name */
+  color: #333;
+  margin-bottom: 8px; /* Reduced margin */
+}
+
+.doctor-card p {
+  font-size: 14px; /* Slightly smaller font for description */
+  color: #555;
+  margin: 5px 0;
+}
+
+.book-appointment-btn {
+  display: block;
+  width: 100%;
+  padding: 12px; /* Reduced padding */
+  background-color: #007bff;
+  color: white;
+  font-size: 14px; /* Reduced font size */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px; /* Reduced margin */
+  transition: background-color 0.3s;
+}
+
+.book-appointment-btn:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1200px) {
+  .App {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .filters {
+    flex: 1;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .doctor-list {
+    flex: 1;
+    margin-left: 20px; /* Add margin left to create space between doctor list and filters */
+  }
+}
+
+@media (max-width: 768px) {
+  .doctor-card {
+    width: 100%; /* Take full width on small screens */
+    height: auto; /* Auto height to accommodate content */
   }
 }
